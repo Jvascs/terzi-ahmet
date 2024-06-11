@@ -20,47 +20,12 @@ const ComponentsUsersAccountSettingsTabs = () => {
         if (isLoaded && isSignedIn && user) {
             setFirstName(user.firstName || '');
             setLastName(user.lastName || '');
-            setProfession(user.publicMetadata?.profession || '');
-            setCountry(user.publicMetadata?.country || 'United States');
-            setAddress(user.publicMetadata?.address || '');
-            setLocation(user.publicMetadata?.location || '');
-            setPhone(user.phoneNumbers[0]?.number || '');
+        
             setEmail(user.emailAddresses[0]?.emailAddress || '');
         }
     }, [isLoaded, isSignedIn, user]);
 
-    const handleSave = async () => {
-        if (!user) return; // Kullanıcı nesnesinin varlığını kontrol et
-
-        try {
-            await user.update({
-                firstName,
-                lastName,
-                publicMetadata: {
-                    profession,
-                    country,
-                    address,
-                    location
-                },
-                phoneNumbers: [
-                    {
-                        id: user.phoneNumbers[0]?.id, // İlgili numaranın ID'sini güncelleyin
-                        number: phone
-                    }
-                ],
-                emailAddresses: [
-                    {
-                        id: user.emailAddresses[0]?.id, // İlgili e-posta adresinin ID'sini güncelleyin
-                        emailAddress: email
-                    }
-                ]
-            });
-            alert('Profil başarıyla güncellendi!');
-        } catch (error) {
-            console.error('Profil güncelleme başarısız oldu:', error);
-            alert('Profil güncelleme başarısız oldu');
-        }
-    };
+   
 
     if (!isLoaded || !isSignedIn) {
         return <div>Yükleniyor...</div>; // Yükleme sürecinde kullanıcıya bilgi verin
