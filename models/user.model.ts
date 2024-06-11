@@ -31,18 +31,6 @@ const userSchema =  new Schema({
         required:true,
         unique: true,
     },
-    adress: {
-        type: String,
-    },
-    country: {
-        type: String,
-    },
-    phone: {
-        type: String,
-    },
-    location: {
-        type: String,
-    },
 })
 
 const User = models?.User || model("User",userSchema)
