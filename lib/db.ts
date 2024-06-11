@@ -1,7 +1,7 @@
 import mongoose, { Mongoose } from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI;
-const dbName = process.env.MONGODB_DB_NAME || "myDatabase"; // Veritabanı adı burada tanımlanıyor, isteğe bağlı olarak ENV'den alınıyor.
+const dbName = process.env.MONGODB_DB_NAME || "ahmet-terzi"; // Veritabanı adı burada tanımlanıyor, isteğe bağlı olarak ENV'den alınıyor.
 
 interface MongooseConn {
   conn: Mongoose | null;
